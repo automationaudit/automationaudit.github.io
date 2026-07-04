@@ -491,7 +491,7 @@
     (() => {
       const track = document.querySelector('.logo-track');
       if (!track || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      let offset = 0;
+      let offset = -(track.parentElement.clientWidth + 120);
       let last = performance.now();
       const speed = () => (window.innerWidth < 620 ? 18 : 26);
       const gap = () => parseFloat(getComputedStyle(track).gap) || 0;
