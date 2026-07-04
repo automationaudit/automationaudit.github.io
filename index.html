@@ -501,7 +501,7 @@
 
       const viewport = track.parentElement.clientWidth;
       const cycle = group.getBoundingClientRect().width;
-      let offset = cycle - viewport;
+      let offset = cycle - viewport - 180;
       let last = performance.now();
       const speed = () => (window.innerWidth < 620 ? 18 : 26);
 
