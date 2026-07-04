@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Automation Audit — 72-hour workflow cleanup</title>
-  <meta name="description" content="We find the one repetitive workflow costing your team time and money — then build a working fix in 72 hours using your existing tools. Fixed fee. No useful fix = no pay.">
+  <meta name="description" content="We find the repetitive workflows costing your team time and money — then build working fixes in 72 hours using your existing tools. Fixed fee. No useful fix = no pay.">
   <style>
     :root{
       --ink:#070707;
@@ -48,26 +48,35 @@
     .logo{width:38px;height:38px;flex-shrink:0}
     .navlinks{display:flex;gap:24px;align-items:center;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
     .navlinks a{opacity:.68}.navlinks a:hover{opacity:1}
-    .nav-cta{border:1px solid #111;padding:12px 16px;border-radius:999px;background:#111;color:var(--cream);opacity:1!important}
+    .nav-cta{border:1px solid #111;padding:12px 16px;border-radius:999px;background:var(--red);color:var(--cream);opacity:1!important}
 
     main{position:relative;z-index:1}
 
     /* ---------- scroll zone: hero + services share bg + sticky badge ---------- */
     .scroll-zone{position:relative;background:var(--paper)}
-    .scroll-badge{
-      position:sticky; top:72vh; z-index:15;
-      width:0;height:0; margin-left:calc(50% - 60px);
+    .scroll-accent{
+      position:sticky; top:44vh; z-index:15;
+      width:0;height:0; margin-left:calc(50% + 170px);
       pointer-events:none;
     }
-    .scroll-badge .disc{
-      width:120px;height:120px;position:relative;
-      filter:drop-shadow(0 10px 24px rgba(20,8,2,.28));
+    .scroll-accent .mark{
+      width:92px;height:92px;position:relative;
+      transform:rotate(-10deg);
+      filter:drop-shadow(0 10px 24px rgba(20,8,2,.18));
     }
-    .scroll-badge svg{width:120px;height:120px;animation:spin 14s linear infinite}
-    .scroll-badge .disc:after{
-      content:"72H";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-      font-family:var(--display);font-size:30px;letter-spacing:-.02em;color:var(--cream);
+    .scroll-accent .mark:before,
+    .scroll-accent .mark:after{
+      content:"";position:absolute;inset:0;border-radius:28px;
     }
+    .scroll-accent .mark:before{background:linear-gradient(145deg, #fff7e8, #f2dfb8);border:2px solid #111}
+    .scroll-accent .mark:after{
+      inset:16px; border-radius:18px;
+      background:
+        radial-gradient(circle at 30% 28%, rgba(215,25,32,.95) 0 10%, transparent 11%),
+        linear-gradient(135deg, transparent 0 43%, #d71920 43% 57%, transparent 57% 100%);
+      clip-path:polygon(18% 5%, 82% 5%, 100% 50%, 82% 95%, 18% 95%, 0 50%);
+    }
+    @keyframes drift{50%{transform:rotate(2deg) translateY(8px)}}
     @keyframes spin{to{transform:rotate(360deg)}}
 
     .hero{padding:56px 0 40px;position:relative}
@@ -112,7 +121,7 @@
     .audit-top{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border-bottom:1px solid rgba(255,255,255,.12);background:#0a0a0a;font-family:var(--mono);font-size:12px;text-transform:uppercase;font-weight:900;color:#d7d1c5}
     .lights{display:flex;gap:7px}.lights span{width:10px;height:10px;border-radius:50%;background:#555}.lights span:nth-child(1){background:var(--red)}.lights span:nth-child(2){background:#ffb000}.lights span:nth-child(3){background:#31d17b}
     .screen{padding:26px;background:linear-gradient(180deg,#151515,#080808)}
-    .screen h2{font-family:var(--display);font-size:42px;line-height:1;text-transform:uppercase;letter-spacing:-.02em;margin:0 0 20px;color:#fffdf5}
+    .screen h2{font-family:var(--display);font-size:40px;line-height:1.02;text-transform:uppercase;letter-spacing:-.01em;margin:0 0 20px;color:#fffdf5}
     .flow{display:grid;gap:12px;margin-top:22px}
     .flow-row{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;background:#f5eddb;color:#111;border-radius:16px;padding:13px}
     .num{font-family:var(--mono);font-weight:950;color:var(--red)}
@@ -124,7 +133,7 @@
     .what-we-do{padding:30px 0 90px}
     .divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent);margin:0 0 70px}
     .wwd-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
-    .wwd-left h2{font-family:var(--display);font-size:clamp(42px,5.6vw,72px);line-height:1;letter-spacing:-.025em;text-transform:uppercase;margin:0 0 20px}
+    .wwd-left h2{font-family:var(--display);font-size:clamp(42px,5.2vw,68px);line-height:1.03;letter-spacing:-.015em;text-transform:uppercase;margin:0 0 20px}
     .wwd-left p{font-size:18px;line-height:1.55;color:#4a4038;font-weight:650;margin:0 0 14px}
     .wwd-right{display:grid;gap:16px}
     .wwd-item{background:#fffdf6;border:1px solid var(--line);border-radius:20px;padding:24px;display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start}
@@ -137,27 +146,27 @@
     .section-dark:before{content:"";position:absolute;inset:-30% auto auto -20%;width:540px;height:540px;background:radial-gradient(circle,rgba(215,25,32,.3),transparent 64%);filter:blur(8px)}
     .section-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:end;margin-bottom:38px}
     .kicker{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--red);font-weight:950;margin:0 0 14px}
-    h2.section-title{font-family:var(--display);font-size:clamp(40px,5.6vw,78px);line-height:1;letter-spacing:-.025em;text-transform:uppercase;margin:0;text-wrap:balance}
+    h2.section-title{font-family:var(--display);font-size:clamp(38px,5.2vw,70px);line-height:1.04;letter-spacing:-.012em;text-transform:uppercase;margin:0;text-wrap:balance}
     .section-copy{font-size:19px;line-height:1.5;color:#4a4038;font-weight:650;margin:0}.section-dark .section-copy{color:#cfc8bc}
 
     .process{display:grid;grid-template-columns:repeat(4,1fr);border:2px solid #111;background:#111;gap:2px;box-shadow:14px 14px 0 rgba(7,7,7,.12)}
     .step{background:var(--cream);padding:28px;min-height:240px;position:relative;overflow:hidden}
-    .step:after{content:attr(data-step);position:absolute;right:-6px;bottom:-24px;font-family:var(--display);font-size:110px;line-height:1;color:rgba(215,25,32,.14)}
-    .step h3{font-family:var(--display);font-size:28px;line-height:1;text-transform:uppercase;letter-spacing:-.015em;margin:0 0 14px}
+    .step:after{content:attr(data-step);position:absolute;right:-6px;bottom:-10px;font-family:var(--display);font-size:104px;line-height:1;color:rgba(215,25,32,.14)}
+    .step h3{font-family:var(--display);font-size:26px;line-height:1.06;text-transform:uppercase;letter-spacing:-.01em;margin:0 0 14px}
     .step p{font-size:15px;line-height:1.45;color:#564d43;font-weight:650;margin:0}
 
     .trust-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch;position:relative;z-index:1}
     .trust-card{border:1px solid rgba(255,255,255,.18);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));border-radius:28px;padding:30px}
-    .trust-card h3{font-family:var(--display);font-size:38px;line-height:1;text-transform:uppercase;letter-spacing:-.02em;margin:0 0 20px}
+    .trust-card h3{font-family:var(--display);font-size:34px;line-height:1.05;text-transform:uppercase;letter-spacing:-.01em;margin:0 0 20px}
     .trust-card li{color:#d8d1c7;font-weight:650;line-height:1.55}.trust-card ul{margin:0;padding-left:20px}.trust-card li+li{margin-top:10px}
     .mini-grid{display:grid;gap:14px}.mini{background:#f5eddb;color:#111;border-radius:22px;padding:22px;border:1px solid #111}
-    .mini strong{display:block;font-family:var(--display);font-size:26px;text-transform:uppercase;letter-spacing:-.015em;line-height:1;margin-bottom:8px}
+    .mini strong{display:block;font-family:var(--display);font-size:23px;text-transform:uppercase;letter-spacing:-.01em;line-height:1.05;margin-bottom:8px}
     .mini span{color:#5d5147;font-size:14px;font-weight:700;line-height:1.42}
 
     /* testimonials */
     .testimonials{background:var(--paper);padding:96px 0;border-top:1px solid var(--line)}
     .testimonials-head{text-align:center;margin-bottom:48px}
-    .testimonials-head h2{font-family:var(--display);font-size:clamp(40px,5.6vw,70px);line-height:1;letter-spacing:-.025em;text-transform:uppercase;margin:0 0 14px}
+    .testimonials-head h2{font-family:var(--display);font-size:clamp(38px,5.2vw,66px);line-height:1.04;letter-spacing:-.012em;text-transform:uppercase;margin:0 0 14px}
     .testimonials-head p{font-size:18px;color:var(--muted);font-weight:650;margin:0}
     .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .testi-card{background:#fffdf6;border:1px solid var(--line);border-radius:24px;padding:28px}
@@ -175,13 +184,19 @@
     .logo-strip{background:#070707;padding:52px 0;border-top:1px solid rgba(255,255,255,.08);overflow:hidden}
     .logo-strip-head{text-align:center;margin-bottom:30px}
     .logo-strip-head p{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:#8a8078;font-weight:800;margin:0}
-    .logo-track{display:flex;gap:54px;align-items:center;animation:scroll-logos 32s linear infinite;width:max-content}
+    .logo-track{display:flex;gap:44px;align-items:center;animation:scroll-logos 32s linear infinite;width:max-content}
     .logo-track:hover{animation-play-state:paused}
-    .logo-item{display:flex;align-items:center;justify-content:center;white-space:nowrap;flex-shrink:0;width:176px;height:76px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(255,255,255,.06);opacity:.78;transition:opacity .2s, transform .2s}
-    .logo-item:hover{opacity:1;transform:translateY(-2px)}
-    .wordmark{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.72);font-weight:950;letter-spacing:-.04em;font-size:22px}
-    .wordmark .sig{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:#fff;color:#111;font-size:16px;font-weight:950;letter-spacing:-.05em}
-    .wordmark .thin{font-weight:700;letter-spacing:-.02em}
+    .logo-item{display:flex;align-items:baseline;gap:12px;white-space:nowrap;flex-shrink:0;opacity:.9;transition:transform .2s, opacity .2s}
+    .logo-item:hover{opacity:1;transform:translateY(-1px)}
+    .logo-mark{font-size:14px;font-weight:950;line-height:1;color:#070707;background:var(--cream);border-radius:999px;padding:6px 8px;display:inline-flex;align-items:center;justify-content:center;min-width:28px}
+    .logo-name{letter-spacing:-.03em;line-height:1;display:inline-flex;align-items:baseline}
+    .brand-homelight .logo-name{font-family:Inter,system-ui,sans-serif;font-weight:800;font-size:23px;color:#ece8e1}
+    .brand-orchard .logo-name{font-family:Georgia,Times,serif;font-style:italic;font-weight:700;font-size:24px;color:#f3efe7}
+    .brand-homeward .logo-name{font-family:Arial,Helvetica,sans-serif;font-weight:900;font-size:23px;color:#ffffff;letter-spacing:-.04em}
+    .brand-flyhomes .logo-name{font-family:Helvetica,Arial,sans-serif;font-weight:700;font-size:22px;color:#dfe6ff;letter-spacing:-.02em}
+    .brand-sundae .logo-name{font-family:"Trebuchet MS",Arial,sans-serif;font-weight:800;font-size:23px;color:#fff1db;letter-spacing:-.03em}
+    .brand-side .logo-name{font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:22px;color:#b8e3ff;letter-spacing:-.03em}
+    .brand-radius .logo-name{font-family:Georgia,serif;font-weight:700;font-size:24px;color:#fff4de;letter-spacing:-.02em}
     @keyframes scroll-logos{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
     /* CTA */
@@ -205,7 +220,7 @@
       .process{grid-template-columns:1fr 1fr}
       .navlinks a:not(.nav-cta){display:none}
       .testimonials-grid{grid-template-columns:1fr}.testi-card.featured{grid-column:span 1}
-      .scroll-badge{display:none}
+      .scroll-accent{display:none}
     }
     @media (max-width: 620px){
       .wrap{width:min(100vw - 24px, 1180px)}.nav{height:64px}.brand span{font-size:14px}
@@ -229,8 +244,12 @@
     <div class="wrap nav">
       <a class="brand" href="#top" aria-label="Automation Audit home">
         <svg class="logo" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="1.5" y="1.5" width="41" height="41" rx="11" fill="#070707"/>
-          <path d="M24.6 8 13 25h7.4l-1.9 11L30 19h-7.5l2.1-11Z" fill="#d71920" stroke="#fff7e8" stroke-width="1.2" stroke-linejoin="round"/>
+          <rect x="1.5" y="1.5" width="41" height="41" rx="14" fill="#0b0b0b"/>
+          <circle cx="22" cy="22" r="13.8" fill="#0f0f0f" stroke="#fff7e8" stroke-width="1.5"/>
+          <path d="M14 13.6 10.4 18.9M30 13.6l3.6 5.3M31 30.2l3.1 4.3M13 30.2l-3.1 4.3" stroke="#d71920" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M25 8.2 12.4 23.8h7.4l-1.7 12 13.6-16.1h-7.8l1.1-11.5Z" fill="#d71920" stroke="#fff7e8" stroke-width="1.2" stroke-linejoin="round"/>
+          <circle cx="22" cy="22" r="4.5" fill="#fff7e8"/>
+          <path d="M19.7 22h4.6" stroke="#0b0b0b" stroke-width="1.2" stroke-linecap="round"/>
         </svg>
         <span>Automation Audit</span>
       </a>
@@ -238,7 +257,7 @@
         <a href="#what">Services</a>
         <a href="#process">Process</a>
         <a href="#reviews">Reviews</a>
-        <a href="#contact" class="nav-cta">Get started</a>
+        <a href="#contact" class="nav-cta">Get Started</a>
       </nav>
     </div>
   </header>
@@ -246,17 +265,8 @@
   <main id="top">
     <!-- scroll zone: hero + services share one background; badge scrolls with you -->
     <div class="scroll-zone">
-      <div class="scroll-badge" aria-hidden="true">
-        <div class="disc">
-          <svg viewBox="0 0 120 120">
-            <defs><path id="circ" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
-            <circle cx="60" cy="60" r="58" fill="#070707"/>
-            <circle cx="60" cy="60" r="34" fill="#d71920"/>
-            <text font-family="ui-monospace,Menlo,monospace" font-size="10.5" font-weight="800" letter-spacing="2.5" fill="#fff7e8">
-              <textPath href="#circ">FIXED FEE • BUILT IN 72 HOURS • NO FIX = NO PAY •</textPath>
-            </text>
-          </svg>
-        </div>
+      <div class="scroll-accent" aria-hidden="true">
+        <div class="mark"></div>
       </div>
 
       <section class="hero wrap">
@@ -264,7 +274,7 @@
           <div>
             <p class="eyebrow reveal">Workflow automation for real estate teams</p>
             <h1 class="reveal delay-1">We fix the workflow <span class="glow-word">you hate doing.</span></h1>
-            <p class="subhead reveal delay-2">Tell us the one repetitive task your team wastes hours on every week. We'll build a working automation in 72 hours — using tools you already have. If it's not useful, you don't pay.</p>
+            <p class="subhead reveal delay-2">Tell us the repetitive task your team wastes hours on every week. We'll build a working automation in 72 hours — using tools you already have. If it's not useful, you don't pay.</p>
             <div class="proof-strip reveal delay-3" aria-label="Offer details">
               <span class="pill">Fixed-fee pilot</span>
               <span class="pill">No new software needed</span>
@@ -272,8 +282,8 @@
               <span class="pill">No useful fix = no pay</span>
             </div>
             <div class="actions reveal delay-3">
-              <a class="button primary" href="#contact">Get the workflow audit →</a>
-              <a class="button secondary" href="#what">What we do</a>
+              <a class="button primary" href="#contact">Get The Workflow Audit →</a>
+              <a class="button secondary" href="#what">What We Do</a>
             </div>
           </div>
 
@@ -301,9 +311,9 @@
           <div class="wwd-grid">
             <div class="wwd-left">
               <p class="kicker">What we actually do</p>
-              <h2>One workflow. Fixed fee. Done in 72 hours.</h2>
-              <p>We're not a consulting firm that hands you a strategy deck. We're not a software company trying to sell you a platform. We find the single workflow leaking the most time or money from your business — and we build the fix ourselves.</p>
-              <p>You tell us what's broken. We audit it, design the solution, build it with your existing tools (Google Sheets, your CRM, email, Zapier, scripts — whatever works), test it, and hand it off with documentation. If the fix isn't useful, you don't pay.</p>
+              <h2>Start With The Biggest Leak. Then Expand.</h2>
+              <p>We're not a consulting firm that hands you a strategy deck. We're not a software company trying to sell you a platform. We find the workflow leaking the most time or money from your business — then we build the fix ourselves.</p>
+              <p>You tell us what's broken. We audit it, design the solution, build it with your existing tools (Google Sheets, your CRM, email, Zapier, scripts — whatever works), test it, and hand it off with documentation. Once the first fix is working, we can keep going and automate the next highest-ROI workflows too.</p>
             </div>
             <div class="wwd-right">
               <div class="wwd-item">
@@ -344,7 +354,7 @@
       <div class="wrap">
         <div class="section-head">
           <div><p class="kicker">The 72-hour build</p><h2 class="section-title">Designed to earn trust fast.</h2></div>
-          <p class="section-copy">The first engagement is intentionally narrow. We do not ask you to overhaul your business. We identify one high-friction workflow, implement the smallest useful fix, test it, and hand it off clearly.</p>
+          <p class="section-copy">The first engagement is intentionally narrow. We do not ask you to overhaul your business. We identify the first high-friction workflow, implement the smallest useful fix, test it, and hand it off clearly.</p>
         </div>
         <div class="process">
           <article class="step" data-step="1"><h3>Map the leak</h3><p>We inspect where the repetitive work starts, where it should land, and what breaks when it depends on memory.</p></article>
@@ -372,7 +382,7 @@
             </ul>
           </article>
           <div class="mini-grid">
-            <div class="mini"><strong>Fixed scope</strong><span>One painful workflow first. Narrow enough to deliver, useful enough to prove value.</span></div>
+            <div class="mini"><strong>Fixed scope</strong><span>A first fix should be narrow enough to deliver, useful enough to prove value.</span></div>
             <div class="mini"><strong>Owner-safe</strong><span>No public messaging, account changes, or risky automations without approval.</span></div>
             <div class="mini"><strong>Free-tool first</strong><span>We use your current stack before recommending anything new.</span></div>
           </div>
@@ -383,7 +393,7 @@
     <section id="reviews" class="testimonials">
       <div class="wrap">
         <div class="testimonials-head">
-          <p class="kicker">What our clients say</p>
+          <p class="kicker">What Our Clients Say</p>
           <h2>Real results from real teams.</h2>
           <p>Teams that stopped losing hours to manual workflows every week.</p>
         </div>
@@ -435,21 +445,21 @@
     <section class="logo-strip">
       <div class="logo-strip-head"><p>Trusted by teams at</p></div>
       <div class="logo-track" aria-label="Client logos">
-        <span class="logo-item"><span class="wordmark"><span class="sig">HL</span><span>HomeLight</span></span></span>
-        <span class="logo-item"><span class="wordmark"><span class="sig">O</span><span>Orchard</span></span></span>
-        <span class="logo-item"><span class="wordmark"><span class="sig">HW</span><span>Homeward</span></span></span>
-        <span class="logo-item"><span class="wordmark"><span class="sig">FH</span><span>Flyhomes</span></span></span>
-        <span class="logo-item"><span class="wordmark"><span class="sig">S</span><span>Sundae</span></span></span>
-        <span class="logo-item"><span class="wordmark"><span class="sig">SD</span><span>Side</span></span></span>
-        <span class="logo-item"><span class="wordmark"><span class="sig">R</span><span>Radius</span></span></span>
+        <span class="logo-item brand-homelight"><span class="logo-mark">HL</span><span class="logo-name">HomeLight</span></span>
+        <span class="logo-item brand-orchard"><span class="logo-mark">O</span><span class="logo-name">Orchard</span></span>
+        <span class="logo-item brand-homeward"><span class="logo-mark">HW</span><span class="logo-name">Homeward</span></span>
+        <span class="logo-item brand-flyhomes"><span class="logo-mark">FH</span><span class="logo-name">Flyhomes</span></span>
+        <span class="logo-item brand-sundae"><span class="logo-mark">S</span><span class="logo-name">Sundae</span></span>
+        <span class="logo-item brand-side"><span class="logo-mark">SD</span><span class="logo-name">Side</span></span>
+        <span class="logo-item brand-radius"><span class="logo-mark">R</span><span class="logo-name">Radius</span></span>
         <!-- duplicate set for seamless loop -->
-        <span class="logo-item"><span class="wordmark"><span class="sig">HL</span><span>HomeLight</span></span></span>
-        <span class="logo-item"><span class="wordmark"><span class="sig">O</span><span>Orchard</span></span></span>
-        <span class="logo-item"><span class="wordmark"><span class="sig">HW</span><span>Homeward</span></span></span>
-        <span class="logo-item"><span class="wordmark"><span class="sig">FH</span><span>Flyhomes</span></span></span>
-        <span class="logo-item"><span class="wordmark"><span class="sig">S</span><span>Sundae</span></span></span>
-        <span class="logo-item"><span class="wordmark"><span class="sig">SD</span><span>Side</span></span></span>
-        <span class="logo-item"><span class="wordmark"><span class="sig">R</span><span>Radius</span></span></span>
+        <span class="logo-item brand-homelight"><span class="logo-mark">HL</span><span class="logo-name">HomeLight</span></span>
+        <span class="logo-item brand-orchard"><span class="logo-mark">O</span><span class="logo-name">Orchard</span></span>
+        <span class="logo-item brand-homeward"><span class="logo-mark">HW</span><span class="logo-name">Homeward</span></span>
+        <span class="logo-item brand-flyhomes"><span class="logo-mark">FH</span><span class="logo-name">Flyhomes</span></span>
+        <span class="logo-item brand-sundae"><span class="logo-mark">S</span><span class="logo-name">Sundae</span></span>
+        <span class="logo-item brand-side"><span class="logo-mark">SD</span><span class="logo-name">Side</span></span>
+        <span class="logo-item brand-radius"><span class="logo-mark">R</span><span class="logo-name">Radius</span></span>
       </div>
     </section>
 
@@ -459,10 +469,10 @@
           <div>
             <p class="kicker">Ready?</p>
             <h2>Tell us the task you hate.</h2>
-            <p>Email us the workflow you're sick of doing manually. We'll reply within 24 hours with what we'd automate first — and whether it fits our fixed-fee pilot.</p>
+            <p>Email us the workflow you're sick of doing manually. We'll reply within 24 hours with what we'd automate first and how we'd expand it into the next workflows after that.</p>
           </div>
           <div class="cta-right">
-            <a class="button primary" href="mailto:alanfurman4@gmail.com?subject=Automation%20Audit&body=The%20repetitive%20workflow%20I%20want%20fixed%20is%3A%0A%0AMy%20current%20tools%20are%3A%0A%0AWhat%20happens%20when%20this%20gets%20missed%3A">Send an email →</a>
+            <a class="button primary" href="mailto:alanfurman4@gmail.com?subject=Automation%20Audit&body=The%20repetitive%20workflow%20I%20want%20fixed%20is%3A%0A%0AMy%20current%20tools%20are%3A%0A%0AWhat%20happens%20when%20this%20gets%20missed%3A">Send An Email →</a>
           </div>
         </div>
       </div>
@@ -472,5 +482,32 @@
   <footer>
     <div class="wrap"><span>Automation Audit</span><span>Practical workflow automation. No software theater.</span></div>
   </footer>
+
+  <script>
+    (() => {
+      const accent = document.querySelector('.scroll-accent .mark');
+      if (!accent) return;
+      let lastY = window.scrollY;
+      let ticking = false;
+      const update = () => {
+        const y = window.scrollY;
+        const delta = y - lastY;
+        lastY = y;
+        const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const progress = Math.max(0, Math.min(1, y / max));
+        const rot = Math.max(-12, Math.min(12, delta * 0.9));
+        const ty = Math.max(0, Math.min(34, progress * 34));
+        accent.style.transform = `rotate(${rot - 10}deg) translate3d(0, ${ty}px, 0)`;
+        ticking = false;
+      };
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      }, { passive: true });
+      update();
+    })();
+  </script>
 </body>
 </html>
