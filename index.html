@@ -497,7 +497,7 @@
       const group = document.createElement('div');
       group.className = 'logo-group';
       source.forEach(node => group.appendChild(node));
-      track.replaceChildren(group, group.cloneNode(true));
+      track.replaceChildren(group, group.cloneNode(true), group.cloneNode(true));
 
       const viewport = track.parentElement.clientWidth;
       const cycle = group.getBoundingClientRect().width;
