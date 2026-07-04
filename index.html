@@ -177,10 +177,11 @@
     .logo-strip-head p{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:#8a8078;font-weight:800;margin:0}
     .logo-track{display:flex;gap:54px;align-items:center;animation:scroll-logos 32s linear infinite;width:max-content}
     .logo-track:hover{animation-play-state:paused}
-    .logo-item{display:flex;align-items:center;justify-content:center;white-space:nowrap;flex-shrink:0;width:156px;height:70px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(255,255,255,.06);filter:grayscale(1);opacity:.78;transition:opacity .2s, filter .2s}
-    .logo-item:hover{opacity:1;filter:grayscale(.35)}
-    .logo-item img{max-height:42px;max-width:118px;object-fit:contain}
-    .logo-item span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+    .logo-item{display:flex;align-items:center;justify-content:center;white-space:nowrap;flex-shrink:0;width:176px;height:76px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(255,255,255,.06);opacity:.78;transition:opacity .2s, transform .2s}
+    .logo-item:hover{opacity:1;transform:translateY(-2px)}
+    .wordmark{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.72);font-weight:950;letter-spacing:-.04em;font-size:22px}
+    .wordmark .sig{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:#fff;color:#111;font-size:16px;font-weight:950;letter-spacing:-.05em}
+    .wordmark .thin{font-weight:700;letter-spacing:-.02em}
     @keyframes scroll-logos{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
     /* CTA */
@@ -434,21 +435,21 @@
     <section class="logo-strip">
       <div class="logo-strip-head"><p>Trusted by teams at</p></div>
       <div class="logo-track" aria-label="Client logos">
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=homelight.com&sz=64" alt="HomeLight logo" loading="lazy"><span>HomeLight</span></span>
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=orchard.com&sz=64" alt="Orchard logo" loading="lazy"><span>Orchard</span></span>
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=homeward.com&sz=64" alt="Homeward logo" loading="lazy"><span>Homeward</span></span>
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=flyhomes.com&sz=64" alt="Flyhomes logo" loading="lazy"><span>Flyhomes</span></span>
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=sundae.com&sz=64" alt="Sundae logo" loading="lazy"><span>Sundae</span></span>
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=side.com&sz=64" alt="Side logo" loading="lazy"><span>Side</span></span>
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=radiusagent.com&sz=64" alt="Radius logo" loading="lazy"><span>Radius</span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">HL</span><span>HomeLight</span></span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">O</span><span>Orchard</span></span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">HW</span><span>Homeward</span></span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">FH</span><span>Flyhomes</span></span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">S</span><span>Sundae</span></span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">SD</span><span>Side</span></span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">R</span><span>Radius</span></span></span>
         <!-- duplicate set for seamless loop -->
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=homelight.com&sz=64" alt="" loading="lazy"><span>HomeLight</span></span>
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=orchard.com&sz=64" alt="" loading="lazy"><span>Orchard</span></span>
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=homeward.com&sz=64" alt="" loading="lazy"><span>Homeward</span></span>
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=flyhomes.com&sz=64" alt="" loading="lazy"><span>Flyhomes</span></span>
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=sundae.com&sz=64" alt="" loading="lazy"><span>Sundae</span></span>
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=side.com&sz=64" alt="" loading="lazy"><span>Side</span></span>
-        <span class="logo-item"><img src="https://www.google.com/s2/favicons?domain=radiusagent.com&sz=64" alt="" loading="lazy"><span>Radius</span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">HL</span><span>HomeLight</span></span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">O</span><span>Orchard</span></span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">HW</span><span>Homeward</span></span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">FH</span><span>Flyhomes</span></span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">S</span><span>Sundae</span></span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">SD</span><span>Side</span></span></span>
+        <span class="logo-item"><span class="wordmark"><span class="sig">R</span><span>Radius</span></span></span>
       </div>
     </section>
 
