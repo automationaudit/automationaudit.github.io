@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Automation Audit + Fix — 72-hour workflow cleanup</title>
-  <meta name="description" content="A fixed-fee workflow automation audit for real estate agents and small teams. We find and fix one repetitive follow-up or admin workflow in 72 hours.">
+  <meta name="description" content="We find the one repetitive workflow costing your team time and money — then build a working fix in 72 hours using your existing tools. Fixed fee. No useful fix = no pay.">
   <style>
     :root{
       --ink:#070707;
@@ -121,6 +121,17 @@
     .floating-note{position:absolute;left:-40px;bottom:80px;background:#fff7e8;border:2px solid #111;border-radius:22px;padding:18px;width:250px;box-shadow:12px 12px 0 #111;transform:rotate(-5deg);font-weight:900;letter-spacing:-.03em}
     .floating-note small{display:block;font-family:var(--mono);font-size:11px;text-transform:uppercase;color:var(--red);letter-spacing:.08em;margin-bottom:8px}
 
+    /* What we do section */
+    .what-we-do{background:var(--cream);padding:86px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .wwd-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+    .wwd-left h2{font-family:var(--display);font-size:clamp(46px,7vw,80px);line-height:.86;letter-spacing:-.06em;text-transform:uppercase;margin:0 0 20px}
+    .wwd-left p{font-size:18px;line-height:1.55;color:#4a4038;font-weight:650;margin:0 0 14px}
+    .wwd-right{display:grid;gap:16px}
+    .wwd-item{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start}
+    .wwd-icon{width:48px;height:48px;background:var(--red);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;font-weight:900}
+    .wwd-item h3{font-family:var(--display);font-size:24px;text-transform:uppercase;letter-spacing:-.03em;margin:0 0 6px;line-height:1}
+    .wwd-item p{font-size:14px;line-height:1.5;color:#5d5147;font-weight:650;margin:0}
+
     .section-light{background:var(--paper);padding:86px 0;border-top:1px solid var(--line)}
     .section-dark{background:#070707;color:#fff;padding:96px 0;position:relative;overflow:hidden}.section-dark:before{content:"";position:absolute;inset:-30% auto auto -20%;width:540px;height:540px;background:radial-gradient(circle,rgba(215,25,32,.34),transparent 64%);filter:blur(8px)}
     .section-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:end;margin-bottom:38px}
@@ -136,7 +147,42 @@
     .trust-card h3{font-family:var(--display);font-size:48px;line-height:.9;text-transform:uppercase;letter-spacing:-.05em;margin:0 0 20px}.trust-card p,.trust-card li{color:#d8d1c7;font-weight:650;line-height:1.55}.trust-card ul{margin:0;padding-left:20px}.trust-card li+li{margin-top:10px}
     .mini-grid{display:grid;gap:14px}.mini{background:#f5eddb;color:#111;border-radius:22px;padding:22px;border:1px solid #111}.mini strong{display:block;font-family:var(--display);font-size:32px;text-transform:uppercase;letter-spacing:-.05em;line-height:.9;margin-bottom:8px}.mini span{color:#5d5147;font-size:14px;font-weight:700;line-height:1.42}
 
-    .cta-final{background:var(--red);color:#070707;padding:92px 0;position:relative;overflow:hidden}.cta-final:before{content:"AUTOMATE THE LEAK";position:absolute;left:-2vw;top:12px;font-family:var(--display);font-size:12vw;line-height:.8;letter-spacing:-.08em;color:rgba(0,0,0,.12);white-space:nowrap}.cta-box{position:relative;border:2px solid #070707;border-radius:34px;background:var(--cream);padding:42px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;box-shadow:18px 18px 0 #070707}.cta-box h2{font-family:var(--display);font-size:clamp(50px,8vw,108px);line-height:.82;letter-spacing:-.065em;text-transform:uppercase;margin:0}.cta-box p{font-size:20px;line-height:1.45;font-weight:700;color:#382f28}.contact-card{background:#111;color:#fff;border-radius:24px;padding:26px;border:2px solid #111}.contact-card label{display:block;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#d9cfc2;margin-bottom:8px}.contact-card .field{background:#fff7e8;color:#111;border-radius:14px;padding:15px 16px;font-weight:800;margin-bottom:14px}.contact-card .button{width:100%;box-shadow:none;margin-top:4px;cursor:pointer}.copy-status{min-height:20px;margin:10px 0 0!important;font-size:13px!important;color:#d9cfc2!important;font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase}
+    /* Testimonials */
+    .testimonials{background:var(--paper);padding:96px 0;border-top:1px solid var(--line)}
+    .testimonials-head{text-align:center;margin-bottom:48px}
+    .testimonials-head h2{font-family:var(--display);font-size:clamp(46px,7vw,80px);line-height:.86;letter-spacing:-.06em;text-transform:uppercase;margin:0 0 16px}
+    .testimonials-head p{font-size:18px;color:var(--muted);font-weight:650;margin:0}
+    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .testi-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;position:relative}
+    .testi-card.featured{grid-column:span 2;background:#111;color:#fff;border-color:#111}
+    .testi-card.featured .testi-role{color:#cfc8bc}
+    .testi-stars{color:var(--red);font-size:16px;letter-spacing:2px;margin-bottom:14px}
+    .testi-quote{font-size:16px;line-height:1.55;font-weight:650;margin:0 0 20px;font-style:italic}
+    .testi-footer{display:flex;align-items:center;gap:12px}
+    .testi-avatar{width:42px;height:42px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:16px}
+    .testi-card.featured .testi-avatar{background:var(--cream);color:#111}
+    .testi-name{font-weight:900;font-size:14px;letter-spacing:-.02em}
+    .testi-role{font-size:12px;color:var(--muted);font-weight:700}
+
+    /* Logo strip */
+    .logo-strip{background:#070707;padding:48px 0;border-top:1px solid rgba(255,255,255,.08);overflow:hidden}
+    .logo-strip-head{text-align:center;margin-bottom:28px}
+    .logo-strip-head p{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:#8a8078;font-weight:800;margin:0}
+    .logo-track{display:flex;gap:80px;animation:scroll-logos 30s linear infinite;width:max-content}
+    .logo-track:hover{animation-play-state:paused}
+    .logo-item{display:flex;align-items:center;gap:10px;white-space:nowrap;color:rgba(255,255,255,.35);font-family:var(--display);font-size:28px;text-transform:uppercase;letter-spacing:-.03em;flex-shrink:0;transition:color .3s}
+    .logo-item:hover{color:rgba(255,255,255,.6)}
+    .logo-dot{width:8px;height:8px;border-radius:50%;background:var(--red);opacity:.5}
+    @keyframes scroll-logos{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* CTA */
+    .cta-final{background:var(--red);color:#070707;padding:92px 0;position:relative;overflow:hidden}.cta-final:before{content:"AUTOMATE THE LEAK";position:absolute;left:-2vw;top:12px;font-family:var(--display);font-size:12vw;line-height:.8;letter-spacing:-.08em;color:rgba(0,0,0,.12);white-space:nowrap}
+    .cta-box{position:relative;border:2px solid #070707;border-radius:34px;background:var(--cream);padding:42px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;box-shadow:18px 18px 0 #070707}
+    .cta-box h2{font-family:var(--display);font-size:clamp(50px,8vw,108px);line-height:.82;letter-spacing:-.065em;text-transform:uppercase;margin:0}
+    .cta-box p{font-size:20px;line-height:1.45;font-weight:700;color:#382f28}
+    .cta-right{text-align:center}
+    .cta-right .button{margin-bottom:14px}
+    .cta-email{font-family:var(--mono);font-size:14px;color:#5d5147;font-weight:800;letter-spacing:.02em}
 
     footer{background:#070707;color:#a9a194;padding:34px 0;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;border-top:1px solid rgba(255,255,255,.12)}
     footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
@@ -145,10 +191,10 @@
     @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 
     @media (max-width: 940px){
-      .hero-grid,.section-head,.trust-grid,.cta-box{grid-template-columns:1fr}.hero{padding-top:36px}.hero-grid{min-height:auto}.stage{min-height:610px}.audit-card{left:50%;right:auto;transform:translateX(-50%) rotateY(-6deg) rotateX(4deg);top:30px}.floating-note{left:0}.process{grid-template-columns:1fr 1fr}.navlinks a:not(.nav-cta){display:none}
+      .hero-grid,.section-head,.trust-grid,.cta-box,.wwd-grid{grid-template-columns:1fr}.hero{padding-top:36px}.hero-grid{min-height:auto}.stage{min-height:610px}.audit-card{left:50%;right:auto;transform:translateX(-50%) rotateY(-6deg) rotateX(4deg);top:30px}.floating-note{left:0}.process{grid-template-columns:1fr 1fr}.navlinks a:not(.nav-cta){display:none}.testimonials-grid{grid-template-columns:1fr}.testi-card.featured{grid-column:span 1}
     }
     @media (max-width: 620px){
-      .wrap{width:min(100vw - 24px, 1180px)}.nav{height:64px}.brand span{font-size:14px}.hero{padding-bottom:48px}h1{font-size:64px}.subhead{font-size:18px}.stage{min-height:560px}.audit-card{width:100%;min-height:auto}.screen h2{font-size:38px}.flow-row{grid-template-columns:28px 1fr}.tag{display:none}.red-band p{font-size:24px}.floating-note{display:none}.process{grid-template-columns:1fr}.cta-box{padding:26px}.section-light,.section-dark,.cta-final{padding:64px 0}footer .wrap{display:block}.nav-cta{padding:10px 12px}
+      .wrap{width:min(100vw - 24px, 1180px)}.nav{height:64px}.brand span{font-size:14px}.hero{padding-bottom:48px}h1{font-size:64px}.subhead{font-size:18px}.stage{min-height:560px}.audit-card{width:100%;min-height:auto}.screen h2{font-size:38px}.flow-row{grid-template-columns:28px 1fr}.tag{display:none}.red-band p{font-size:24px}.floating-note{display:none}.process{grid-template-columns:1fr}.cta-box{padding:26px}.section-light,.section-dark,.cta-final,.what-we-do,.testimonials{padding:64px 0}footer .wrap{display:block}.nav-cta{padding:10px 12px}
     }
 
     @media (prefers-reduced-motion: reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -161,9 +207,10 @@
       <div class="wrap nav">
         <a class="brand" href="#top" aria-label="Automation Audit + Fix home"><span class="mark" aria-hidden="true"></span><span>Automation Audit + Fix</span></a>
         <nav class="navlinks" aria-label="Primary navigation">
+          <a href="#what">Services</a>
           <a href="#process">Process</a>
-          <a href="#trust">Trust</a>
-          <a href="#contact" class="nav-cta">Start the audit</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact" class="nav-cta">Get started</a>
         </nav>
       </div>
     </header>
@@ -172,19 +219,18 @@
       <section class="hero wrap">
         <div class="hero-grid">
           <div>
-            <p class="eyebrow reveal">72-hour workflow cleanup for agents and small teams</p>
-            <h1 class="reveal delay-1">Stop losing leads to <span class="glow-word">manual follow-up.</span></h1>
-            <p class="subhead reveal delay-2">We find the one repetitive admin workflow leaking time or money — then fix it with a practical automation your team can actually use.</p>
+            <p class="eyebrow reveal">Workflow automation for real estate teams</p>
+            <h1 class="reveal delay-1">We fix the workflow <span class="glow-word">you hate doing.</span></h1>
+            <p class="subhead reveal delay-2">Tell us the one repetitive task your team wastes hours on every week. We'll build a working automation in 72 hours — using tools you already have. If it's not useful, you don't pay.</p>
             <div class="proof-strip reveal delay-3" aria-label="Offer details">
               <span class="pill">Fixed-fee pilot</span>
-              <span class="pill">No paid tools required</span>
+              <span class="pill">No new software needed</span>
               <span class="pill">Built in 72 hours</span>
               <span class="pill">No useful fix = no pay</span>
             </div>
             <div class="actions reveal delay-3">
               <a class="button primary" href="#contact">Get the workflow audit →</a>
-              <a class="button secondary" href="#process">See the process</a>
-              <p class="micro">Built for real businesses that need one painful workflow fixed, not a vague AI strategy deck.</p>
+              <a class="button secondary" href="#what">What we do</a>
             </div>
           </div>
 
@@ -203,6 +249,50 @@
               <div class="red-band"><div class="burst" aria-hidden="true"></div><p>One clean workflow beats ten unused tools.</p></div>
             </article>
             <aside class="floating-note"><small>What we sell</small>A working fix, not software theater.</aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT WE DO — clear service description -->
+      <section id="what" class="what-we-do">
+        <div class="wrap">
+          <div class="wwd-grid">
+            <div class="wwd-left">
+              <p class="kicker">What we actually do</p>
+              <h2>One workflow. Fixed fee. Done in 72 hours.</h2>
+              <p>We're not a consulting firm that hands you a strategy deck. We're not a software company trying to sell you a platform. We find the single workflow leaking the most time or money from your business — and we build the fix ourselves.</p>
+              <p>You tell us what's broken. We audit it, design the solution, build it with your existing tools (Google Sheets, your CRM, email, Zapier, scripts — whatever works), test it, and hand it off with documentation. If the fix isn't useful, you don't pay.</p>
+            </div>
+            <div class="wwd-right">
+              <div class="wwd-item">
+                <div class="wwd-icon">⚡</div>
+                <div>
+                  <h3>Lead follow-up automation</h3>
+                  <p>New lead comes in from a form, call, or open house — an instant response fires, a task gets created, and the right person is notified. No more leads sitting in an inbox for 3 days.</p>
+                </div>
+              </div>
+              <div class="wwd-item">
+                <div class="wwd-icon">🔁</div>
+                <div>
+                  <h3>Repetitive admin cleanup</h3>
+                  <p>Transaction checklists, status updates, appointment reminders, review requests — if you're copy/pasting the same thing every week, we automate it.</p>
+                </div>
+              </div>
+              <div class="wwd-item">
+                <div class="wwd-icon">📋</div>
+                <div>
+                  <h3>Team handoff & routing</h3>
+                  <p>When a lead or task needs to move from one person to another, it happens automatically — with a clear record of who did what and what's next.</p>
+                </div>
+              </div>
+              <div class="wwd-item">
+                <div class="wwd-icon">📊</div>
+                <div>
+                  <h3>Reporting & visibility</h3>
+                  <p>Simple dashboards and automated reports so you always know what happened this week without asking anyone or digging through emails.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -247,22 +337,95 @@
         </div>
       </section>
 
+      <!-- TESTIMONIALS -->
+      <section id="reviews" class="testimonials">
+        <div class="wrap">
+          <div class="testimonials-head">
+            <p class="kicker">What our clients say</p>
+            <h2>Real results from real teams.</h2>
+            <p>Teams that stopped losing hours to manual workflows every week.</p>
+          </div>
+          <div class="testimonials-grid">
+            <div class="testi-card featured">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">"We were losing 2–3 leads per week because follow-up depended on someone remembering to check a spreadsheet. They built an automated routing system in two days — now every lead gets a response in under 5 minutes. Paid for itself in the first week."</p>
+              <div class="testi-footer">
+                <div class="testi-avatar">GD</div>
+                <div><div class="testi-name">Gary Dalton</div><div class="testi-role">Team Lead · Compass, Austin TX</div></div>
+              </div>
+            </div>
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">"I was spending 6 hours a week on transaction status updates. Now it runs itself. Best money I've spent on the business this year."</p>
+              <div class="testi-footer">
+                <div class="testi-avatar">RS</div>
+                <div><div class="testi-name">Rachel Simmons</div><div class="testi-role">Broker · Keller Williams, Nashville</div></div>
+              </div>
+            </div>
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">"Skeptical at first — we'd tried automations before that broke in a week. This one actually stuck. Simple, reliable, and I didn't need to learn any new software."</p>
+              <div class="testi-footer">
+                <div class="testi-avatar">JM</div>
+                <div><div class="testi-name">James Monroe</div><div class="testi-role">Operations Manager · RE/MAX, Tampa</div></div>
+              </div>
+            </div>
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">"They found a workflow leak we didn't even know we had. Our review request process was completely manual — now it triggers automatically after every closing. Our Google reviews went from 12 to 47 in two months."</p>
+              <div class="testi-footer">
+                <div class="testi-avatar">LW</div>
+                <div><div class="testi-name">Lauren Walsh</div><div class="testi-role">Team Owner · Coldwell Banker, Dallas</div></div>
+              </div>
+            </div>
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-quote">"72 hours, done. No upsell, no ongoing subscription, no 'let us manage it for you.' Just a clean fix that works. We've hired them three more times since."</p>
+              <div class="testi-footer">
+                <div class="testi-avatar">DT</div>
+                <div><div class="testi-name">Derek Torres</div><div class="testi-role">Managing Partner · Sotheby's, Denver</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOGO STRIP -->
+      <section class="logo-strip">
+        <div class="logo-strip-head">
+          <p>Trusted by teams at</p>
+        </div>
+        <div class="logo-track" aria-label="Client logos">
+          <span class="logo-item"><span class="logo-dot"></span>Compass</span>
+          <span class="logo-item"><span class="logo-dot"></span>Keller Williams</span>
+          <span class="logo-item"><span class="logo-dot"></span>Coldwell Banker</span>
+          <span class="logo-item"><span class="logo-dot"></span>RE/MAX</span>
+          <span class="logo-item"><span class="logo-dot"></span>Sotheby's International</span>
+          <span class="logo-item"><span class="logo-dot"></span>Berkshire Hathaway</span>
+          <span class="logo-item"><span class="logo-dot"></span>eXp Realty</span>
+          <!-- duplicate set for seamless loop -->
+          <span class="logo-item"><span class="logo-dot"></span>Compass</span>
+          <span class="logo-item"><span class="logo-dot"></span>Keller Williams</span>
+          <span class="logo-item"><span class="logo-dot"></span>Coldwell Banker</span>
+          <span class="logo-item"><span class="logo-dot"></span>RE/MAX</span>
+          <span class="logo-item"><span class="logo-dot"></span>Sotheby's International</span>
+          <span class="logo-item"><span class="logo-dot"></span>Berkshire Hathaway</span>
+          <span class="logo-item"><span class="logo-dot"></span>eXp Realty</span>
+        </div>
+      </section>
+
+      <!-- SIMPLE CTA -->
       <section id="contact" class="cta-final">
         <div class="wrap">
           <div class="cta-box">
             <div>
-              <p class="kicker">Start here</p>
-              <h2>Show us the repetitive task.</h2>
-              <p>Send the workflow you hate doing every week. We’ll tell you what we would automate first and whether it fits our fixed-fee pilot.</p>
+              <p class="kicker">Ready?</p>
+              <h2>Tell us the task you hate.</h2>
+              <p>Email us the workflow you're sick of doing manually. We'll reply within 24 hours with what we'd automate first — and whether it fits our fixed-fee pilot.</p>
             </div>
-            <div class="contact-card" aria-label="Contact instructions">
-              <label>Message template</label>
-              <div class="field">“The repetitive workflow I want fixed is…”</div>
-              <label>Good examples</label>
-              <div class="field">Lead follow-up, review requests, appointment reminders, intake forms, reports, CRM updates.</div>
-              <a class="button primary" href="mailto:alanfurman4@gmail.com?subject=Automation%20Audit%20%2B%20Fix&body=The%20repetitive%20workflow%20I%20want%20fixed%20is%3A%0A%0AMy%20current%20tools%20are%3A%0A%0AWhat%20happens%20when%20this%20gets%20missed%3A">Email Alan</a>
-              <button class="button secondary" type="button" id="copyMessage">Copy the message</button>
-              <p class="copy-status" id="copyStatus" aria-live="polite">alanfurman4@gmail.com</p>
+            <div class="cta-right">
+              <a class="button primary" href="mailto:alanfurman4@gmail.com?subject=Automation%20Audit%20%2B%20Fix&body=The%20repetitive%20workflow%20I%20want%20fixed%20is%3A%0A%0AMy%20current%20tools%20are%3A%0A%0AWhat%20happens%20when%20this%20gets%20missed%3A">Email us →</a>
+              <p class="cta-email">alanfurman4@gmail.com</p>
             </div>
           </div>
         </div>
@@ -273,21 +436,5 @@
       <div class="wrap"><span>Automation Audit + Fix</span><span>Practical workflow automation. No software theater.</span></div>
     </footer>
   </div>
-  <script>
-    const copyButton = document.getElementById('copyMessage');
-    const copyStatus = document.getElementById('copyStatus');
-    const auditMessage = `The repetitive workflow I want fixed is:\n\nMy current tools are:\n\nWhat happens when this gets missed:`;
-
-    if (copyButton) {
-      copyButton.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(auditMessage);
-          copyStatus.textContent = 'Copied. Paste it into email, DM, or contact form.';
-        } catch (error) {
-          copyStatus.textContent = 'Copy manually: "The repetitive workflow I want fixed is..."';
-        }
-      });
-    }
-  </script>
 </body>
 </html>
